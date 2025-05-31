@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tino Tyson | Polymath</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles for light mode (White and Shades of Red) */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff; /* White background */
+            color: #b71c1c; /* Darker red for default text */
+            transition: background-color 0.7s ease-in-out, color 0.7s ease-in-out;
+        }
+        /* Specific elements in light mode */
+        .text-gray-900 {
+            color: #880e4f; /* Deepest red for main headings */
+        }
+        .text-gray-800 {
+            color: #ad1457; /* Dark red for subheadings */
+        }
+        .text-gray-700 {
+            color: #d81b60; /* Medium dark red for paragraphs */
+        }
+        .text-gray-600 {
+            color: #e91e63; /* Vibrant red for secondary info */
+        }
+        .text-gray-500 {
+            color: #f06292; /* Lighter red for footer */
+        }
+        .bg-white {
+            background-color: #ffffff; /* White background for cards/sections */
+        }
+        .text-indigo-600 {
+            color: #c2185b; /* Strong red for accents/links */
+        }
+        .border-indigo-200 {
+            border-color: #f8bbd0; /* Very light pinkish-red border for photo */
+        }
+        .bg-gray-200 {
+            background-color: #fce4ec; /* Very light pinkish-red for secondary buttons */
+            color: #880e4f; /* Deepest red text on light red buttons */
+        }
+        .hover\:bg-gray-300:hover {
+            background-color: #f8bbd0; /* Slightly darker light red on hover */
+        }
+        .bg-indigo-500 {
+            background-color: #c2185b; /* Strong red for primary buttons */
+        }
+        .hover\:bg-indigo-600:hover {
+            background-color: #a00037; /* Darker strong red on hover */
+        }
+
+
+        /* Dark mode styles (Blue and Black) - applied when 'dark' class is on html */
+        html.dark body {
+            background-color: #000000; /* Black background */
+            color: #90caf9; /* Light blue text */
+        }
+        html.dark .bg-white {
+            background-color: #1a202c; /* Dark blue background for cards/sections */
+        }
+        html.dark .text-gray-900 {
+            color: #e3f2fd; /* Very light blue for main headings */
+        }
+        html.dark .text-gray-800 {
+            color: #bbdefb; /* Lighter blue for subheadings */
+        }
+        html.dark .text-gray-700 {
+            color: #90caf9; /* Medium blue for paragraphs */
+        }
+        html.dark .text-gray-600 {
+            color: #64b5f6; /* Darker blue for secondary info */
+        }
+        html.dark .text-gray-500 {
+            color: #42a5f5; /* Even darker blue for footer */
+        }
+        html.dark .text-indigo-600 {
+            color: #2196f3; /* Vibrant blue for accents/links */
+        }
+        html.dark .border-indigo-200 {
+            border-color: #1976d2; /* Dark blue border for photo */
+        }
+        html.dark .bg-gray-200 {
+            background-color: #212121; /* Dark gray for secondary buttons */
+            color: #90caf9; /* Light blue text on dark gray buttons */
+        }
+        html.dark .hover\:bg-gray-300:hover {
+            background-color: #424242; /* Even darker gray on hover */
+        }
+        html.dark .bg-indigo-500 {
+            background-color: #1976d2; /* Vibrant blue for primary buttons */
+        }
+        html.dark .hover\:bg-indigo-600:hover {
+            background-color: #1565c0; /* Darker vibrant blue on hover */
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container mx-auto p-4 md:p-8 lg:p-12 max-w-6xl">
+
+        <header class="text-center mb-12 bg-white p-8 rounded-lg shadow-md">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2">
+                Tino Tyson
+            </h1>
+            <p class="text-xl md:text-2xl text-indigo-600 font-medium">
+                Polymath
+            </p>
+
+            <button id="darkModeToggle" class="absolute top-4 right-4 p-5 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 transition-colors duration-200">
+                <svg id="sunIcon" class="w-6 h-6 absolute inset-0 m-auto transition-all duration-500 ease-in-out" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="opacity: 1; transform: rotate(0deg);">
+                    <circle cx="12" cy="12" r="8"></circle>
+                    <line x1="12" y1="2" x2="12" y2="4" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+                    <line x1="12" y1="20" x2="12" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+                    <line x1="2" y1="12" x2="4" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+                    <line x1="20" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+                    <line x1="6.34" y1="6.34" x2="4.22" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+                    <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+                    <line x1="17.66" y1="6.34" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+                    <line x1="6.34" y1="17.66" x2="4.22" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+                </svg>
+                <svg id="moonIcon" class="w-6 h-6 absolute inset-0 m-auto transition-all duration-500 ease-in-out" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="opacity: 0; transform: rotate(-90deg);">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+            </button>
+        </header>
+
+        <section id="about" class="mb-12 bg-white p-8 rounded-lg shadow-md flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8">
+            <div class="flex-shrink-0 w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden shadow-lg border-4 border-indigo-200">
+                <img src="/home/davinci/Desktop/Programming/52/Protfolio/Res/left.jpg" alt="Image of Tino Tyson" class="w-full h-full object-cover">
+            </div>
+            <div class="flex-grow text-center md:text-left">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">About Me</h2>
+                <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                   Ever since came to know about Leonardo Da Vinci, 
+                   I've always wanted to be a Polymath. 
+                   <br>Hi I'm Tino. Aspiring Polymath.<br>
+                    You can't become an artist, just by painting a single potrait. <br>
+                    You can't become a programmer just by creating a single project.<br>
+                </p>
+                <h3 class="text-2xl font-semibold text-gray-800 mb-3">Skills</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-xl font-medium text-gray-700 mb-2">Technical Skills:</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Programming Languages: Python, HTML/CSS, JavaScript, Java, C</li>
+                            <li>Frameworks/Libraries: React, Tailwind CSS</li>
+                            <li>Databases: SQL, MongoDB, PostgreSQL</li>
+                            <li>Tools & Platforms: Git, Figma</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-medium text-gray-700 mb-2">Soft Skills:</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Problem-Solving</li>
+                            <li>Communication</li>
+                            <li>Teamwork</li>
+                            <li>Project Management</li>
+                            <li>Adaptability</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 text-center mb-8">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <img src="/home/davinci/Desktop/Programming/52/Protfolio/Res/portfolio.png" alt="Project 1 Screenshot" class="w-full h-48 object-cover rounded-md mb-4 shadow-sm">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Portfolio</h3>
+                    <p class="text-gray-700 text-sm mb-3">
+                        Developed a Portfolio for myself. Used AI, which allowed the development in a very short amount of time.
+                    </p>
+                    <p class="text-gray-600 text-sm mb-3">
+                        <strong class="text-gray-700">Technologies:</strong> HTML, CSS, JavaScript
+                    </p>
+                    <p class="text-gray-600 text-sm mb-3">
+                        <strong class="text-gray-700">My Role:</strong> Designed UI/UX
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        <a href="#" class="inline-block bg-indigo-500 text-white px-4 py-2 rounded-md hover:bg-indigo-600 transition-colors duration-200 text-sm font-medium">
+                            View Live
+                        </a>
+                        <a href="#" class="inline-block bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors duration-200 text-sm font-medium">
+                            GitHub Repo
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/818cf8/ffffff?text=Project+2" alt="Coming Soon!" class="w-full h-48 object-cover rounded-md mb-4 shadow-sm">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Coming Soon!</h3>
+                    
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/818cf8/ffffff?text=Project+3" alt="Project 3 Screenshot" class="w-full h-48 object-cover rounded-md mb-4 shadow-sm">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Coming Soon!</h3>
+                
+                </div>
+
+            </div>
+        </section>
+
+        <section id="experience" class="mb-12 bg-white p-8 rounded-lg shadow-md">
+            <h2 class="text-3xl font-bold text-gray-800 text-center mb-6">Experience</h2>
+            <div class="space-y-6">
+                <div class="border-b pb-4 last:border-b-0">
+                    <h3 class="text-xl font-semibold text-gray-800">Cyber Security Intern</h3>
+                    <p class="text-indigo-600 font-medium mb-1">Human Initials | May 2025 – Present</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        <li>Learned various networking concepts.</li>
+                        <li>Learned various concepts on cybersecurity.</li>
+                        <li>Contributed to a number of penetration tests.</li>
+                    </ul>
+                </div>
+
+                
+            </div>
+        </section>
+
+        <section id="education" class="mb-12 bg-white p-8 rounded-lg shadow-md">
+            <h2 class="text-3xl font-bold text-gray-800 text-center mb-6">Education</h2>
+            <div class="space-y-4">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800">Bachelor of Technology (BTech) in Computer Science and Engineering</h3>
+                    <p class="text-indigo-600 font-medium mb-1">APJ Abdul Kalam Technological University | 2027</p>
+                    <p class="text-gray-700">Relevant coursework, honors, or projects if applicable.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="bg-white p-8 rounded-lg shadow-md text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Get In Touch</h2>
+            <div class="text-lg text-gray-700 space-y-3">
+                <p><strong>Email:</strong> <a href="mailto:contacts.tinotyson@gmail.com" class="text-indigo-600 hover:underline">Tino Tyson</a></p>
+                <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/tino-tyson-692ab2290/" target="_blank" class="text-indigo-600 hover:underline">Tino Tyson</a></p>
+                <p><strong>GitHub:</strong> <a href="https://github.com/D4-Vinci" target="_blank" class="text-indigo-600 hover:underline">D4-Vinci</a></p>
+                <p><strong>Blog:</strong> <a href="#" target="_blank" class="text-indigo-600 hover:underline">Coming Soon!</a></p>
+            </div>
+        </section>
+
+        <footer class="text-center text-gray-500 text-sm mt-12 py-4">
+            &copy; 2025 Tino Tyson. All rights reserved.
+        </footer>
+
+    </div>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const htmlElement = document.documentElement; // This refers to the <html> tag
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+
+        // Function to set the theme and apply transitions
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                htmlElement.classList.add('dark');
+                // Moon icon appears, Sun icon disappears with rotation
+                moonIcon.style.opacity = '1';
+                moonIcon.style.transform = 'rotate(0deg)';
+                sunIcon.style.opacity = '0';
+                sunIcon.style.transform = 'rotate(90deg)'; // Rotate out
+            } else { // Light mode
+                htmlElement.classList.remove('dark');
+                // Sun icon appears, Moon icon disappears with rotation
+                sunIcon.style.opacity = '1';
+                sunIcon.style.transform = 'rotate(0deg)';
+                moonIcon.style.opacity = '0';
+                moonIcon.style.transform = 'rotate(-90deg)'; // Rotate out in opposite direction
+            }
+            localStorage.setItem('theme', theme); // Save preference
+        }
+
+        // Initial setup based on saved theme or system preference
+        // This ensures the correct icon is shown and positioned correctly on page load
+        // This function is called immediately after the DOM is loaded.
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                setTheme(savedTheme);
+            } else {
+                // Default to dark mode if no saved preference
+                setTheme('dark');
+            }
+        })();
+
+
+        // Toggle theme on button click
+        darkModeToggle.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+    </script>
+</body>
+</html>
